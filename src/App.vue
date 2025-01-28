@@ -37,7 +37,7 @@ async function insertf() {
   }
 
   await supabase.from('minecraft')
-      .upsert({ id: user.value.id, username: username, ip: ip.value, password: password })
+      .upsert({ id: user.value.id, username: username, ip: ip.value })
       .select()
   save.value = 2
   setTimeout(() => save.value = undefined, 6000)
@@ -59,10 +59,6 @@ async function insertf() {
     <div v-else class="flex flex-col gap-1">
       <label for="username">Ник</label>
       <input class="rounded-xl bg-neutral-700 p-2 text-white" id="username" placeholder="Введите ваш ник" value="steve" min="3" max="32"/>
-      <label for="username">Ник</label>
-      <input class="rounded-xl bg-neutral-700 p-2 text-white" id="password" placeholder="Введите ваш ник" value="steve" min="3" max="32"/>
-      <label for="username">Ник</label>
-      <input class="rounded-xl bg-neutral-700 p-2 text-white" id="repeat-password" placeholder="Введите ваш ник" value="steve" min="3" max="32"/>
       <button v-if="save === undefined" class="rounded-xl p-2 bg-neutral-700" @click="insertf">Сохранить</button>
       <div v-else-if="save === 1" class="rounded-xl p-2 bg-neutral-700 flex items-center justify-center">
         <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
